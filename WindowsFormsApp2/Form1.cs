@@ -28,6 +28,7 @@ namespace WindowsFormsApp2
             button3.Font = new Font("Arial", (float)10.5);
             button4.Text = "UA";
             button4.Font = new Font("Arial", (float)10.5);
+            richTextBox1.Font = new Font("Arial", 12);
         }
         private Button[] buttonArray;
         bool shift = false;
@@ -42,22 +43,21 @@ namespace WindowsFormsApp2
                 buttonArray[i] = new Button();
                 char c = (char)(i + 97);
                 buttonArray[i].Text = c.ToString();
-                //buttonArray[i].Text = "Кнопка " + (buttonArray[i]);
-                //buttonArray[i].Location = new System.Drawing.Point(20, 20 + i * 30);
                 buttonArray[i].BackColor = Color.LightCyan;
-                buttonArray[i].Size = new System.Drawing.Size(30, 23);
+                buttonArray[i].Font = new Font("Arial", 12);
+                buttonArray[i].Size = new System.Drawing.Size(30, 30);
                 int x = 0; int y = 0;
-                if (i < 10)
+                if (i < 13)
                 {
-                    y = 300;
-                    x = 40 * i + 40;
+                    y = 350;
+                    x = 40 * i + 170;
                 }
                 else
                 {
-                    y = 350;
-                    x = 40 * (i - 10) + 40;
+                    y = 400;
+                    x = 40 * (i - 13) + 170;
                 }
-                buttonArray[i].Location = new System.Drawing.Point(20, 20 + i * 30);
+                buttonArray[i].Location = new System.Drawing.Point(x, y);
                 // Используем замыкание для передачи индекса кнопки в обратном событии Click
                 int index = i;
                 buttonArray[i].Click += (sender, e) => Button_Click(sender, e, index);
@@ -67,21 +67,23 @@ namespace WindowsFormsApp2
 
         private void Button_Click(object sender, EventArgs e, int buttonIndex)
         {
-            label1.Text = "but: " + buttonArray[buttonIndex].Text;
+            //label1.Text = "but: " + buttonArray[buttonIndex].Text;
 
             if (shift && capse)
             {
-                richTextBox1.Text += b1.Text;
+                richTextBox1.Text += buttonArray[buttonIndex].Text;
                 shift = false;
                 button1.BackColor = Color.White;
-                buttonArray[e].BackColor = Color.White;
+                //buttonArray[e].BackColor = Color.White;
             }
             else if (shift || capse)
             {
-                richTextBox1.Text += b1.Text.ToUpper();
+                richTextBox1.Text += buttonArray[buttonIndex].Text.ToUpper();
                 shift = false;
                 button1.BackColor = Color.White;
             }
+            else
+                richTextBox1.Text += buttonArray[buttonIndex].Text;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -102,6 +104,6 @@ namespace WindowsFormsApp2
                 button2.BackColor = Color.MistyRose;
             }
         }
-        
+
     }
 }
