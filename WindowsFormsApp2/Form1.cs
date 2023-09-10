@@ -69,19 +69,19 @@ namespace WindowsFormsApp2
         {
             label1.Text = "but: " + buttonArray[buttonIndex].Text;
 
-            //if (shift && capse)
-            //{
-            //    richTextBox1.Text += b1.Text;
-            //    shift = false;
-            //    button1.BackColor = Color.White;
-            //    buttonArray[e].BackColor = Color.White;
-            //}
-            //else if (shift || capse)
-            //{
-            //    richTextBox1.Text += b1.Text.ToUpper();
-            //    shift = false;
-            //    button1.BackColor = Color.White;
-            //}
+            if (shift && capse)
+            {
+                richTextBox1.Text += b1.Text;
+                shift = false;
+                button1.BackColor = Color.White;
+                buttonArray[e].BackColor = Color.White;
+            }
+            else if (shift || capse)
+            {
+                richTextBox1.Text += b1.Text.ToUpper();
+                shift = false;
+                button1.BackColor = Color.White;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
