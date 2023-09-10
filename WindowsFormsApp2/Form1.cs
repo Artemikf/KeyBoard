@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using System.
 
 namespace WindowsFormsApp2
 {
@@ -26,8 +27,31 @@ namespace WindowsFormsApp2
             button2.Font = new Font("Arial", (float)12.5);
             button3.Text = "EN";
             button3.Font = new Font("Arial", (float)10.5);
+            button3.BackColor = Color.Bisque;
             button4.Text = "UA";
             button4.Font = new Font("Arial", (float)10.5);
+            button4.BackColor = Color.Beige;
+            button5.Text = "Space";
+            button5.Font = new Font("Arial", (float)12.5);
+            button6.Text = "Shift";
+            button6.Font = new Font("Arial", (float)12.5);
+            button7.Text = "TAB";
+            button7.Font = new Font("Arial", (float)12.5);
+            button8.Text = "Backspace";
+            button8.Font = new Font("Arial", (float)12.5);
+            button9.Text = "Enter";
+            button9.Font = new Font("Arial", (float)12.5);
+            button10.Text = "`";
+            button10.BackColor = Color.LightCyan;
+            button10.Font = new Font("Arial", (float)15);
+            button5.BackColor = Color.LightSalmon;
+            button6.BackColor = Color.LightSalmon;
+            button7.BackColor = Color.LightSalmon;
+            button8.BackColor = Color.LightSalmon;
+            button9.BackColor = Color.LightSalmon;
+            button10.BackColor = Color.LightSalmon;
+            button1.BackColor = Color.LightSalmon;
+            button2.BackColor = Color.LightSalmon;
             richTextBox1.Font = new Font("Arial", 12);
         }
         private Button[] buttonArray;
@@ -44,18 +68,18 @@ namespace WindowsFormsApp2
                 char c = (char)(i + 97);
                 buttonArray[i].Text = c.ToString();
                 buttonArray[i].BackColor = Color.LightCyan;
-                buttonArray[i].Font = new Font("Arial", 12);
-                buttonArray[i].Size = new System.Drawing.Size(30, 30);
+                buttonArray[i].Font = new Font("Arial", 15);
+                buttonArray[i].Size = new System.Drawing.Size(45, 45);
                 int x = 0; int y = 0;
                 if (i < 13)
                 {
-                    y = 350;
-                    x = 40 * i + 170;
+                    y = 365;
+                    x = 55 * i + 95;
                 }
                 else
                 {
-                    y = 400;
-                    x = 40 * (i - 13) + 170;
+                    y = 415;
+                    x = 55 * (i - 13) + 95;
                 }
                 buttonArray[i].Location = new System.Drawing.Point(x, y);
                 // Используем замыкание для передачи индекса кнопки в обратном событии Click
@@ -74,6 +98,7 @@ namespace WindowsFormsApp2
                 richTextBox1.Text += buttonArray[buttonIndex].Text;
                 shift = false;
                 button1.BackColor = Color.White;
+                button6.BackColor = Color.White;
                 //buttonArray[e].BackColor = Color.White;
             }
             else if (shift || capse)
@@ -81,6 +106,7 @@ namespace WindowsFormsApp2
                 richTextBox1.Text += buttonArray[buttonIndex].Text.ToUpper();
                 shift = false;
                 button1.BackColor = Color.White;
+                button6.BackColor = Color.White;
             }
             else
                 richTextBox1.Text += buttonArray[buttonIndex].Text;
@@ -105,5 +131,73 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button3.Font = new Font("Arial", (float)10.5);
+            button3.BackColor = Color.Bisque;
+            button4.Text = "UA";
+            button4.Font = new Font("Arial", (float)10.5);
+            button4.BackColor = Color.Beige;
+
+            for (int i = 0; i < buttonArray.Length; i++)
+            {
+                buttonArray[i] = new Button();
+                char c = (char)(i + 97);
+                buttonArray[i].Text = c.ToString();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            button3.Font = new Font("Arial", (float)10.5);
+            button4.BackColor = Color.Bisque;
+            button4.Text = "UA";
+            button4.Font = new Font("Arial", (float)10.5);
+            button3.BackColor = Color.Beige;
+
+            for (int i = 0; i < buttonArray.Length; i++)
+            {
+                buttonArray[i] = new Button();
+                char c = (char)(i + 160);
+                buttonArray[i].Text = c.ToString();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string str = " ";
+            richTextBox1.Text += str;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            shift = true;
+            button6.BackColor = Color.MistyRose;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string str = "    ";
+            richTextBox1.Text += str;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string str = "`";
+            richTextBox1.Text += str;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 0)
+            {
+                richTextBox1.Text = richTextBox1.Text.Substring(0, richTextBox1.Text.Length - 1);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            richTextBox1.AppendText(Environment.NewLine);
+        }
     }
 }
